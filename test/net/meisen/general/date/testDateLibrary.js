@@ -230,7 +230,6 @@ test('testDistance', function() {
 });
 
 test('testExactDistance', function() {
-  
   var dateLibrary = require('net/meisen/general/date/DateLibrary');
   var levels = DateLibrary.getLevels();
   
@@ -261,4 +260,23 @@ test('testExactDistance', function() {
     var dateB = new Date(dateA.getTime() + Math.random() * (end.getTime() - dateA.getTime())); 
     assert(dateA, dateB);
   }
+});
+
+test('testParseString', function() {
+  var dateLibrary = require('net/meisen/general/date/DateLibrary');
+  
+  var org = dateLibrary.createUTC(2013, 11, 13, 8, 27, 55);
+  var test = function(org, format, level) {
+    var formattedOrg = dateLibrary.formatUTC(org, format);
+    var res = dateLibrary.parseString(formattedOrg, format);
+    var exp = dateLibrary.truncateUTC(org, level);
+    
+    equal(exp.getTime(), res.getTime(), 'checked format "' + format + '" (' + formattedOrg + '/' + exp + ' -> ' + res + ')');
+  }
+  
+  var format;
+  test(org, 'dd.MM.yyyy HH:mm:ss', null);
+  test(org, 'Hallo yyyy', 'm');
+  test(org, 'yes we can: yyyy/dd/MM', 'h');
+  test(org, 'does that: yyyy$dd!MM really work', 'h');
 });

@@ -351,36 +351,112 @@ define([], function () {
     }
   };
   
-  DateLibrary.parseISO8601 = function(value) {
-      
-      // check null
-      if (value == null || typeof(value) == 'undefined') {
-        return null;
-      } 
-      
-      // check if we have a Date
-      if (value instanceof Date) {
-        return value;
-      } 
-      
-      // check ISO8601 
-      var regex = new RegExp('^([\\d]{4})\\-([\\d]{2})\\-([\\d]{2})T([\\d]{2}):([\\d]{2}):([\\d]{2})(\\.([\\d]{3}))?Z$');
-      var matches = regex.exec(value);
-      if (matches != null) {
+  DateLibrary.parseString = function(value, format) {
 
-        return DateLibrary.createUTC(
-          parseInt(matches[1], 10),
-          parseInt(matches[2], 10),
-          parseInt(matches[3], 10),
-          parseInt(matches[4], 10),
-          parseInt(matches[5], 10),
-          parseInt(matches[6], 10)
-        );
+    // check null
+    if (value == null || typeof(value) == 'undefined') {
+      return null;
+    } 
+    
+    // check if we have a Date
+    if (value instanceof Date) {
+      return value;
+    } 
+    
+    // change the defined format to a regular expression
+    var regEx = format;
+    
+    // quote special characters
+    regEx = regEx.replace(/(\.|\\|\+|\*|\?|\[|\^|\]|\$|\(|\)|\{|\}|\=|\!|\<|\>|\||\:|\-)/g, function(v) { return '\\' + v; });
+    
+    // replace the different markers
+    regEx = regEx.replace('yyyy', '(\\d{4})');
+    regEx = regEx.replace('MM', '(\\d{2})');
+    regEx = regEx.replace('dd', '(\\d{2})');
+    regEx = regEx.replace('HH', '(\\d{2})');
+    regEx = regEx.replace('mm', '(\\d{2})');
+    regEx = regEx.replace('ss', '(\\d{2})');
+        
+    var regex = new RegExp('^' + regEx + '$');
+    var matches = regex.exec(value);
+    if (matches != null) {
+      
+      // define the different group numbers
+      var yyyy = MM = dd = HH = mm = ss = -1;
+      var len = -1;
+      var groupNr = 1;
+      for (var i = 0, len = format.length; i < len;) {
+        var token = format.substr(i, 2);
+        if (token == 'MM') {
+          MM = groupNr;
+          i += 2;
+        } else if (token == 'dd') {
+          dd = groupNr;
+          i += 2;
+        } else if (token == 'HH') {
+          HH = groupNr;
+          i += 2;
+        } else if (token == 'mm') {
+          mm = groupNr;
+          i += 2;
+        } else if (token == 'ss') {
+          ss = groupNr;
+          i += 2;
+        } else if (token == 'yy' && format.substr(i, 4) == 'yyyy') {
+          yyyy = groupNr;
+          i += 4;
+        } else {
+          i++;
+          continue;
+        }
+        
+        groupNr++;
       }
       
-      // fallback
-      return null;
+      var year = yyyy > -1 ? parseInt(matches[yyyy], 10) : 0;
+      var month = MM > -1 ? parseInt(matches[MM], 10) : 1;
+      var day = dd > -1 ? parseInt(matches[dd], 10) : 1;
+      var hour = HH > -1 ? parseInt(matches[HH], 10) : 0;
+      var minute = mm > -1 ? parseInt(matches[mm], 10) : 0;
+      var second = ss > -1 ? parseInt(matches[ss], 10) : 0;
+
+      return DateLibrary.createUTC(year, month, day, hour, minute, second);
     }
+    
+    // fallback
+    return null;
+  };
+  
+  DateLibrary.parseISO8601 = function(value) {
+      
+    // check null
+    if (value == null || typeof(value) == 'undefined') {
+      return null;
+    } 
+    
+    // check if we have a Date
+    if (value instanceof Date) {
+      return value;
+    } 
+    
+    // check ISO8601 
+    var regex = new RegExp('^([\\d]{4})\\-([\\d]{2})\\-([\\d]{2})T([\\d]{2}):([\\d]{2}):([\\d]{2})(\\.([\\d]{3}))?Z$');
+    var matches = regex.exec(value);
+    if (matches != null) {
+
+      return DateLibrary.createUTC(
+        parseInt(matches[1], 10),
+        parseInt(matches[2], 10),
+        parseInt(matches[3], 10),
+        parseInt(matches[4], 10),
+        parseInt(matches[5], 10),
+        parseInt(matches[6], 10)
+      );
+    }
+    
+    // fallback
+    return null;
+  };
     
   return DateLibrary;
 });

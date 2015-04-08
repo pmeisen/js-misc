@@ -214,6 +214,11 @@ define([], function () {
   };
   
   DateLibrary.normalizeLevel = function(level) {
+    
+    if (level == null || typeof(level) == 'undefined') {
+      return null;
+    }
+    
     switch (level.toLowerCase()) {
       case 'y':
       case 'year':

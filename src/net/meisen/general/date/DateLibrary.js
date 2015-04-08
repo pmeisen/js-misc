@@ -219,6 +219,7 @@ define([], function () {
       return null;
     }
     
+    // first do some lower-case matching
     switch (level.toLowerCase()) {
       case 'y':
       case 'year':
@@ -246,6 +247,23 @@ define([], function () {
         return 's';
     }
     
+    // add the formatting level as well
+    switch (level) {
+      case 'yyyy':
+        return 'y';
+      case 'MM':
+        return 'm';
+      case 'dd':
+        return 'd';
+      case 'HH':
+        return 'h';
+      case 'mm':
+        return 'mi';
+      case 'ss':
+        return 's';
+    }
+    
+    // fallback
     return null;
   };
   

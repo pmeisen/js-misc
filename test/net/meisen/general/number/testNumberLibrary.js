@@ -20,5 +20,13 @@ test('testFormat', function() {
   
   equal(numberLibrary.format(2.657, '#.00'), '2.66');
   equal(numberLibrary.format(2.657, '#000.00'), '002.66');
+  equal(numberLibrary.format(2.657, '0000.00'), '0002.66');
   equal(numberLibrary.format(50022.657, '#000.00'), '50022.66');
+  
+  equal(numberLibrary.format(2.657, '###,###,000.00'), '002.66');
+  equal(numberLibrary.format(2.657, '###,##0,000.00'), '0,002.66');
+  equal(numberLibrary.format(50022.657, '###,###,000.00'), '50,022.66');
+  equal(numberLibrary.format(5000022.657, '###,###,000.00'), '5,000,022.66');
+  equal(numberLibrary.format(50022.657, '#,##,##,#0,00.00'), '5,00,22.66');
+  equal(numberLibrary.format(1002130120120.657, '#,##,##,##,##,#0,00.00#'), '1,00,21,30,12,01,20.657');
 });

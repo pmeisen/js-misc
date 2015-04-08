@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  
+  <!-- project settings -->
+  <groupId>net.meisen.general</groupId>
+  <artifactId>net-meisen-general-js-misc</artifactId>
+  <version>TRUNK</version>
+  <name>misc</name>
+  <description>Library providing misc stuff</description>
+  
+  <!-- the projects dependencies -->
+  <dependencies>        
+    <dependency>
+      <groupId>org.requirejs</groupId>
+      <artifactId>require</artifactId>
+      <version>2.1.8</version>
+    </dependency>
+  </dependencies>
+</project>

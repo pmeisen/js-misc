@@ -79,7 +79,7 @@ define([], function () {
       
       var diffDecimalPlaces = formatStat.fixedDecimalPlaces - numberStat.decimalPlaces;
       if (diffDecimalPlaces > 0) {
-        formattedNumber += numberStat.decimal + Array(diffPreDecimalPlaces + 1).join('0')
+        formattedNumber += numberStat.decimal + Array(diffDecimalPlaces + 1).join('0')
       } else if (numberStat.decimalPlaces > 0) {
         formattedNumber += numberStat.decimal;
       }

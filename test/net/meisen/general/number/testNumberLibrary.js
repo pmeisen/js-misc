@@ -34,4 +34,7 @@ test('testFormat', function() {
   equal(numberLibrary.format(15005, '###,###,###,###,##0.####'), '15,005');
   equal(numberLibrary.format(1213213.89012312, '###,###,###,###,##0.####'), '1,213,213.8901');
   equal(numberLibrary.format(1213213.00000001, '###,###,###,###,##0.####'), '1,213,213');
+  
+  equal(numberLibrary.format(480, '#.00'), '480.00');
+  equal(numberLibrary.format(220.1, '#.00'), '220.10');
 });

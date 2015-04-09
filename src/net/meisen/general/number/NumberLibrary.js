@@ -15,6 +15,10 @@ define([], function () {
   NumberLibrary.optionalPlace = '#';
   
   NumberLibrary.format = function(number, format, decimalPoint, groupSeparator) {
+    if (typeof(format) == 'undefined' || format == null || typeof(number) == 'undefined' || number == null) {
+      return null;
+    }
+    
     var formattedNumber = '';
     
     decimalPoint = typeof(decimalPoint) == 'undefined' || decimalPoint == null ? '.' : decimalPoint;

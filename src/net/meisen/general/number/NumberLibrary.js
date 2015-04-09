@@ -29,8 +29,11 @@ define([], function () {
     
     // round the number, and create the stat
     var roundedNumber = number.toFixed(formatStat.decimalPlaces);
+    
+    // removing leading & trailing zeros, and create the stats
     roundedNumber = roundedNumber[0] == '0' && roundedNumber.length > 1 ? roundedNumber.substring(1) : roundedNumber;
-    var numberStat = NumberLibrary.createStat(roundedNumber);
+    roundedNumber = roundedNumber.indexOf('.') > -1 ? roundedNumber.replace(/0*$/, '') : roundedNumber;
+    var numberStat = NumberLibrary.createStat(roundedNumber);   
     
     // add the preDecimalPlaces
     var diffPreDecimalPlaces = formatStat.fixedPreDecimalPlaces - numberStat.preDecimalPlaces;
@@ -71,14 +74,14 @@ define([], function () {
     }
 
     // add the decimal point and decimalPlaces
-    if (formatStat.decimalPlaces > 0 || numberStat.decimalPlaces > 0) {
+    if (formatStat.fixedDecimalPlaces > 0 || numberStat.decimalPlaces > 0) {
       formattedNumber += decimalPoint;
       
       var diffDecimalPlaces = formatStat.fixedDecimalPlaces - numberStat.decimalPlaces;
       if (diffDecimalPlaces > 0) {
         formattedNumber += numberStat.decimal + Array(diffPreDecimalPlaces + 1).join('0')
       } else if (numberStat.decimalPlaces > 0) {
-        formattedNumber += numberStat.decimal
+        formattedNumber += numberStat.decimal;
       }
     }
     

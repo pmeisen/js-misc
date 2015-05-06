@@ -1,0 +1,37 @@
+{
+  "name": "js-misc",
+  "version": "0.0.6",
+  "description": "JavaScript with several misc stuff always good to have.",
+  "author": "Philipp Meisen <philipp@meisen.net>",
+  "contributors": [],
+  "scripts": {
+    "test": "ant test",
+    "start": "ant startDevEnv",
+        
+    "prepublish": "ant npmSingleFile",
+    "postpublish": "ant npmCleanUp"
+  },
+  "main": "dist/misc.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pmeisen/js-misc"
+  },
+  "bugs": {
+    "url": "https://github.com/pmeisen/js-misc/issues"
+  },
+  "keywords": [
+    "utility",
+    "misc",
+    "miscellaneous"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "amdclean": "latest"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/pmeisen/js-misc/blob/master/LICENSE"
+    }
+  ]
+}

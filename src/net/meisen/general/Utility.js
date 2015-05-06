@@ -40,6 +40,5 @@ define([], function () {
     return null;
   };
   
-  
   return Utility;
 });

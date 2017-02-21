@@ -198,7 +198,11 @@ module.exports = function (grunt) {
         grunt.task.run('01-resolve-dependencies', 'copy:setup', 'execute:compile');
     });
 
-    grunt.registerTask('03-run-server', 'Start the web-server for fast debugging.', function (port) {
+    grunt.registerTask('04-deploy', 'Update the current root-directory', function () {
+        grunt.task.run('01-resolve-dependencies', 'copy:setup', 'execute:compile');
+    });
+
+    grunt.registerTask('98-run-server', 'Start the web-server for fast debugging.', function (port) {
         port = typeof port === 'undefined' || port === null || isNaN(parseFloat(port)) || !isFinite(port) ? 20000 : parseInt(port);
         grunt.config.set('server.port', port);
 
@@ -206,10 +210,6 @@ module.exports = function (grunt) {
 
         grunt.log.writeln('For testing   : http://localhost:' + port + '/test.html');
         grunt.log.writeln('For an example: http://localhost:' + port + '/index.html');
-    });
-
-    grunt.registerTask('04-deploy', 'Update the current root-directory', function () {
-        grunt.task.run('01-resolve-dependencies', 'copy:setup', 'execute:compile');
     });
 
     grunt.registerTask('99-run-dist-server', 'Runs a server with the dist-version', function (port) {

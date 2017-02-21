@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Test Distribution js-misc (powered by QUnit)</title>
+    <link rel="stylesheet" href="/scripts/qunit.css">
+
+    <script src="/scripts/qunit.js"></script>
+    <script src="/scripts/js-misc.min.js"></script>
+    <script>
+        QUnit.test("check availability", function (assert) {
+            assert.notStrictEqual(null, Utility, 'Utility is not null.');
+            assert.notStrictEqual(null, DateLibrary, 'DateLibrary is not null.');
+            assert.notStrictEqual(null, NumberLibrary, 'NumberLibrary is not null.');
+            assert.notStrictEqual(null, IntervalCollection, 'IntervalCollection is not null.');
+
+            assert.ok(typeof Utility === 'function', 'Utility is static object.');
+            assert.ok(typeof Utility.getSupportedEvent === 'function', 'Utility.getSupportedEvent is function.');
+
+            assert.ok(typeof DateLibrary === 'function', 'DateLibrary is static object.');
+            assert.ok(typeof DateLibrary.createUTC === 'function', 'DateLibrary.createUTC is function.');
+
+            assert.ok(typeof NumberLibrary === 'function', 'NumberLibrary is static object.');
+            assert.ok(typeof NumberLibrary.format === 'function', 'NumberLibrary.format is function.');
+
+            assert.ok(typeof IntervalCollection === 'function', 'IntervalCollection is function.');
+            assert.ok(typeof new IntervalCollection() === 'object', 'IntervalCollection is object.');
+            assert.ok(typeof new IntervalCollection().insert === 'function', 'intervalCollection.insert is function.');
+        });
+    </script>
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+</body>
+</html>

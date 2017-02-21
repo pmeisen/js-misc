@@ -3,7 +3,7 @@ define(['net/meisen/general/interval/Interval'], function (Interval) {
   /**
    * Default constructor...
    */
-  IntervalCollection = function() {
+  var IntervalCollection = function() {
     this.sortedStartList = [];
     this.sortedEndList = [];
   };

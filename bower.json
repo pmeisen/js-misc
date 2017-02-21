@@ -19,16 +19,11 @@
   ],
   "license": "MIT",
   "private": false,
-  "dependencies": {},
+  "dependencies": {
+    "almond": "^0.3.3"
+  },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-bower-install-simple": "^1.2.1",
-    "grunt-contrib-connect": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-execute": "^0.2.2",
-    "grunt-sync-json": "^0.4.0",
-    "main-bower-files": "^2.11.1",
-    "requirejs": "2.3.3"
+    "requirejs": "2.3.3",
+    "qunit": "2.1.1"
   }
 }

@@ -191,7 +191,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('01-resolve-dependencies', 'Resolve all the dependencies', function () {
-        grunt.task.run('bower-install-simple:dep', 'bower:dep');
+        grunt.task.run('sync-json:dep', 'bower-install-simple:dep', 'bower:dep');
     });
 
     grunt.registerTask('02-compile-sources', 'Update the current root-directory', function () {
@@ -217,6 +217,8 @@ module.exports = function (grunt) {
         grunt.config.set('server.port', port);
 
         grunt.task.run('04-deploy', 'copy:dist', 'connect:dist', 'watch:dist');
+
+        grunt.log.writeln('For an example: http://localhost:' + port + '/testDistribution.html');
     });
 
 };

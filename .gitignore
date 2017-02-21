@@ -1,7 +1,7 @@
 /_*
 /node_modules
 /bower_components
-/www-root
+/www-*
 /override.properties
 /.classpath
 /.project

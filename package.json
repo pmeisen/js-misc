@@ -5,7 +5,7 @@
   "authors": [
     "Philipp Meisen <philipp@meisen.net>"
   ],
-  "main": "dist/misc.js",
+  "main": "dist/js-misc.min.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/pmeisen/js-misc"

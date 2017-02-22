@@ -16,6 +16,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('main-bower-files');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-execute');
+    grunt.loadNpmTasks('grunt-publish');
+    grunt.loadNpmTasks('grunt-bump');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -182,10 +184,27 @@ module.exports = function (grunt) {
                                 out: prefixFilename + '.min.js'
                             }, baseConfig), cleanUp);
                         } else {
-                            cleanUp()
+                            cleanUp();
                         }
                     });
                 }
+            }
+        },
+
+        publish: {
+            options: {
+                ignore: ['node_modules', 'bower_components']
+            },
+            deploy: {
+                src: './'
+            }
+        },
+
+        bump: {
+            options: {
+                files: ['package.json', 'bower.json'],
+                commitFiles: ['.'],
+                pushTo: 'origin'
             }
         }
     });
@@ -199,7 +218,10 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('04-deploy', 'Update the current root-directory', function () {
-        grunt.task.run('01-resolve-dependencies', 'copy:setup', 'execute:compile');
+        grunt.log.writeln('Make sure your bower project is registered using: ');
+        grunt.log.writeln('$ bower register ' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.repository.bump'));
+
+        grunt.task.run('02-compile-sources', 'bump', 'publish:deploy');
     });
 
     grunt.registerTask('98-run-server', 'Start the web-server for fast debugging.', function (port) {
@@ -220,5 +242,4 @@ module.exports = function (grunt) {
 
         grunt.log.writeln('For an example: http://localhost:' + port + '/testDistribution.html');
     });
-
 };

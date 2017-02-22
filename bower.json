@@ -1,6 +1,6 @@
 {
   "name": "js-misc",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "JavaScript with several misc stuff always good to have.",
   "authors": [
     "Philipp Meisen <philipp@meisen.net>"
@@ -8,7 +8,8 @@
   "main": "dist/js-misc.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pmeisen/js-misc"
+    "url": "https://github.com/pmeisen/js-misc",
+    "bump": "git://github.com/pmeisen/js-misc.git"
   },
   "keywords": [
     "utility",

@@ -1,6 +1,6 @@
 {
   "name": "js-misc",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "JavaScript with several misc stuff always good to have.",
   "authors": [
     "Philipp Meisen <philipp@meisen.net>"
@@ -8,7 +8,8 @@
   "main": "dist/js-misc.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pmeisen/js-misc"
+    "url": "https://github.com/pmeisen/js-misc",
+    "bump": "git://github.com/pmeisen/js-misc.git"
   },
   "keywords": [
     "utility",
@@ -21,14 +22,16 @@
   "private": false,
   "dependencies": {},
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-bower-install-simple": "^1.2.1",
-    "grunt-contrib-connect": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-execute": "^0.2.2",
-    "grunt-sync-json": "^0.4.0",
-    "main-bower-files": "^2.11.1",
+    "grunt": "1.0.1",
+    "grunt-bower-install-simple": "1.2.3",
+    "grunt-bump": "0.8.0",
+    "grunt-contrib-connect": "1.0.2",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-execute": "0.2.2",
+    "grunt-publish": "1.0.0",
+    "grunt-sync-json": "0.4.0",
+    "main-bower-files": "2.13.1",
     "requirejs": "2.3.3"
   }
 }

@@ -202,7 +202,7 @@ module.exports = function (grunt) {
 
         bump: {
             options: {
-                files: ['package.json', 'bower.json'],
+                // files: ['package.json', 'bower.json'],
                 commitFiles: ['.'],
                 pushTo: 'origin'
             }
@@ -220,6 +220,8 @@ module.exports = function (grunt) {
     grunt.registerTask('04-deploy', 'Update the current root-directory', function () {
         grunt.log.writeln('Make sure your bower project is registered using: ');
         grunt.log.writeln('$ bower register ' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.repository.bump'));
+        grunt.log.writeln('Make sure your npm users are added: ');
+        grunt.log.writeln('$ npm adduser');
 
         grunt.task.run('02-compile-sources', 'bump', 'publish:deploy');
     });

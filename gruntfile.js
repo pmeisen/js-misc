@@ -18,7 +18,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-execute');
     grunt.loadNpmTasks('grunt-publish');
     grunt.loadNpmTasks('grunt-bump');
-    grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-mocha-test');
 
     grunt.initConfig({

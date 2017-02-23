@@ -94,7 +94,7 @@ server and adding `<script>...</script>` tags:
 <script src="/js/js-misc.min.js"></script>
 ```
 
-The different libraries are bound to the `window` instance and thus are directly available for any other script:
+The different libraries are bound to the `window` instance and are directly available for any other script:
 
 ```html
 <script src="/js/js-misc.min.js"></script>

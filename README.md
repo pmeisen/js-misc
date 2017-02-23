@@ -111,7 +111,7 @@ Currently this library offers just a couple of functions, which I needed within 
 the future I plan to add more and more general functions, whenever I have the chance to make code available to the public 
 and or have some time to write private code, useful code-snippets. Currently, one of the main functionalities available is
 the `Interval` stuff. Thus, I give a some examples on how to use this part of the library. Examples can be found also within 
-the test folder, i.e., [test](/test/net/meisen.general) and [specs](/specs/net/meisen.general).
+the test folder, i.e., [test](/test/net/meisen/general) and [specs](/specs/net/meisen/general).
 
 **Note (nodeJs users only):** 
 

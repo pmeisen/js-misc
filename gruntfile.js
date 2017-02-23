@@ -18,6 +18,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-execute');
     grunt.loadNpmTasks('grunt-publish');
     grunt.loadNpmTasks('grunt-bump');
+    grunt.loadNpmTasks('grunt-bump');
+    grunt.loadNpmTasks('grunt-mocha-test');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -132,7 +134,13 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: [
-                    {expand: true, flatten: false, cwd: bowerPaths.bowerDirectory + '/qunit/qunit', src: '**/*', dest: 'www-dist/scripts'},
+                    {
+                        expand: true,
+                        flatten: false,
+                        cwd: bowerPaths.bowerDirectory + '/qunit/qunit',
+                        src: '**/*',
+                        dest: 'www-dist/scripts'
+                    },
                     {expand: true, flatten: false, cwd: 'dist', src: '**/*', dest: 'www-dist/scripts'},
                     {expand: true, flatten: false, cwd: 'public', src: 'testDistribution.html', dest: 'www-dist'}
                 ]
@@ -191,6 +199,14 @@ module.exports = function (grunt) {
             }
         },
 
+        mochaTest: {
+            test: {
+                options: {
+                },
+                src: ['specs/**/*.js']
+            }
+        },
+
         publish: {
             options: {
                 ignore: ['node_modules', 'bower_components']
@@ -217,31 +233,38 @@ module.exports = function (grunt) {
         grunt.task.run('01-resolve-dependencies', 'copy:setup', 'execute:compile');
     });
 
-    grunt.registerTask('04-deploy', 'Update the current root-directory', function () {
-        grunt.log.writeln('Make sure your bower project is registered using: ');
-        grunt.log.writeln('$ bower register ' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.repository.bump'));
-        grunt.log.writeln('Make sure your npm users are added: ');
-        grunt.log.writeln('$ npm adduser');
+    // 03-run-test-suite
+    grunt.registerTask('03-run-test-suite', 'Test the testable stuff', function () {
+        grunt.task.run('02-compile-sources', 'mochaTest:test');
+    });
 
-        grunt.task.run('02-compile-sources', 'bump', 'publish:deploy');
+    grunt.registerTask('04-deploy', 'Update the current root-directory', function () {
+        grunt.config.set('log.msg', 'Make sure your bower project is registered using: ' + '\n' +
+            '$ bower register ' + grunt.config('pkg.name') + ' ' + grunt.config('pkg.repository.bump') + '\n' +
+            'Make sure your npm users are added: ' + '\n' +
+            '$ npm adduser');
+
+        grunt.task.run('02-compile-sources', 'log', 'bump', 'publish:deploy');
     });
 
     grunt.registerTask('98-run-server', 'Start the web-server for fast debugging.', function (port) {
         port = typeof port === 'undefined' || port === null || isNaN(parseFloat(port)) || !isFinite(port) ? 20000 : parseInt(port);
         grunt.config.set('server.port', port);
+        grunt.config.set('log.msg', 'For testing   : http://localhost:' + port + '/test.html' + '\n' +
+            'For an example: http://localhost:' + port + '/index.html');
 
-        grunt.task.run('01-resolve-dependencies', 'copy:setup', 'connect:server', 'watch:server');
-
-        grunt.log.writeln('For testing   : http://localhost:' + port + '/test.html');
-        grunt.log.writeln('For an example: http://localhost:' + port + '/index.html');
+        grunt.task.run('01-resolve-dependencies', 'copy:setup', 'connect:server', 'log', 'watch:server');
     });
 
     grunt.registerTask('99-run-dist-server', 'Runs a server with the dist-version', function (port) {
         port = typeof port === 'undefined' || port === null || isNaN(parseFloat(port)) || !isFinite(port) ? 20000 : parseInt(port);
         grunt.config.set('server.port', port);
+        grunt.config.set('log.msg', 'Test the distribution: http://localhost:' + port + '/testDistribution.html');
 
-        grunt.task.run('04-deploy', 'copy:dist', 'connect:dist', 'watch:dist');
+        grunt.task.run('02-compile-sources', 'copy:dist', 'connect:dist', 'log', 'watch:dist');
+    });
 
-        grunt.log.writeln('For an example: http://localhost:' + port + '/testDistribution.html');
+    grunt.registerTask('log', 'Writes a log messages', function () {
+        grunt.log.writeln(grunt.config.get('log.msg'));
     });
 };

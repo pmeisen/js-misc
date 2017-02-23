@@ -94,7 +94,7 @@ module.exports = function (grunt) {
                 },
 
                 // define the task to run when a change happens
-                tasks: ['04-deploy', 'copy:dist'],
+                tasks: ['02-compile-sources', 'copy:dist'],
 
                 // files to observe, can be an array
                 files: ['public/testDistribution.html', 'src/Optimizer.js']

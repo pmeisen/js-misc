@@ -5,6 +5,9 @@
   "authors": [
     "Philipp Meisen <philipp@meisen.net>"
   ],
+  "scripts": {
+    "test": "grunt 03-run-test-suite"
+  },
   "main": "dist/js-misc.js",
   "repository": {
     "type": "git",

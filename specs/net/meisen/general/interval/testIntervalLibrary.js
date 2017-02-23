@@ -9,6 +9,7 @@ describe('IntervalCollection', function () {
 
     it('IntervalCollection compare', function () {
         var intervalCollection = new misc.IntervalCollection();
+        var Interval = misc.IntervalCollection.Interval;
 
         assert.equal(intervalCollection.compare(new Interval(2, 5), new Interval(2, 5)), 0);
 
@@ -21,6 +22,7 @@ describe('IntervalCollection', function () {
 
     it('IntervalCollection compareReverse', function () {
         var intervalCollection = new misc.IntervalCollection();
+        var Interval = misc.IntervalCollection.Interval;
 
         assert.equal(intervalCollection.compareReverse(new Interval(2, 5), new Interval(2, 5)), 0);
 
@@ -36,6 +38,7 @@ describe('IntervalCollection', function () {
 
     it('IntervalCollection findPosition', function () {
         var intervalCollection = new misc.IntervalCollection();
+        var Interval = misc.IntervalCollection.Interval;
 
         // set a sortedList
         var list = [
@@ -60,6 +63,8 @@ describe('IntervalCollection', function () {
 
     it('IntervalCollection insert', function () {
         var intervalCollection = new misc.IntervalCollection();
+        var Interval = misc.IntervalCollection.Interval;
+
         assert.equal(0, intervalCollection.size());
 
         // add and check
@@ -93,6 +98,8 @@ describe('IntervalCollection', function () {
 
     it('IntervalCollection overlap', function () {
         var intervalCollection = new misc.IntervalCollection();
+        var Interval = misc.IntervalCollection.Interval;
+
         assert.equal(0, intervalCollection.size());
         assert.equal(0, intervalCollection.overlap(new Interval(5, 8)).length);
         assert.equal(0, intervalCollection.overlap(new Interval(0, 100)).length);
@@ -135,6 +142,8 @@ describe('IntervalCollection', function () {
 
     it('IntervalCollection insert all', function () {
         var intervalCollection = new misc.IntervalCollection();
+        var Interval = misc.IntervalCollection.Interval;
+
         intervalCollection.insertAll([
             new Interval(1, 4, {id: 1}),
             new Interval(-10, 8, {id: 2}),

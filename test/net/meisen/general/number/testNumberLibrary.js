@@ -33,6 +33,7 @@ define(['QUnit', 'net/meisen/general/number/NumberLibrary'], function (QUnit, Nu
         QUnit.assert.equal(NumberLibrary.format(15005, '###,###,###,###,##0.####'), '15,005');
         QUnit.assert.equal(NumberLibrary.format(1213213.89012312, '###,###,###,###,##0.####'), '1,213,213.8901');
         QUnit.assert.equal(NumberLibrary.format(1213213.00000001, '###,###,###,###,##0.####'), '1,213,213');
+        QUnit.assert.equal(NumberLibrary.format(15005, '###,###,##0.00', ',', '.'), '15.005,00');
 
         QUnit.assert.equal(NumberLibrary.format(480, '#.00'), '480.00');
         QUnit.assert.equal(NumberLibrary.format(220.1, '#.00'), '220.10');

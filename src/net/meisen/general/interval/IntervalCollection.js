@@ -1,5 +1,5 @@
 define(['net/meisen/general/interval/Interval'], function (Interval) {
-    
+
   /**
    * Default constructor...
    */
@@ -7,6 +7,8 @@ define(['net/meisen/general/interval/Interval'], function (Interval) {
     this.sortedStartList = [];
     this.sortedEndList = [];
   };
+
+  IntervalCollection.Interval = Interval;
   
   /**
    * Extended prototype:

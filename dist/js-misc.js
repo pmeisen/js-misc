@@ -1169,7 +1169,7 @@ define('net/meisen/general/interval/Interval',['net/meisen/general/date/DateLibr
    * Constructor specifying the start and end as well 
    * as additional meta-information.
    */
-  Interval = function(start, end, data) {
+  var Interval = function(start, end, data) {
 
     // get the type
     if (start == Interval.MAX_VALUE) {
@@ -1277,7 +1277,7 @@ define('net/meisen/general/interval/Interval',['net/meisen/general/date/DateLibr
   return Interval;
 });
 define('net/meisen/general/interval/IntervalCollection',['net/meisen/general/interval/Interval'], function (Interval) {
-    
+
   /**
    * Default constructor...
    */
@@ -1285,6 +1285,8 @@ define('net/meisen/general/interval/IntervalCollection',['net/meisen/general/int
     this.sortedStartList = [];
     this.sortedEndList = [];
   };
+
+  IntervalCollection.Interval = Interval;
   
   /**
    * Extended prototype:
@@ -1456,7 +1458,6 @@ var instance = {
 
 // we are using the system within a browser
 if (typeof window !== 'undefined') {
-    console.log('test2');
     for (var property in instance) {
         if (instance.hasOwnProperty(property)) {
             window[property] = instance[property];

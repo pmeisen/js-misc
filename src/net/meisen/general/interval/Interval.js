@@ -41,7 +41,7 @@ define(['net/meisen/general/date/DateLibrary'], function (datelib) {
    * Constructor specifying the start and end as well 
    * as additional meta-information.
    */
-  Interval = function(start, end, data) {
+  var Interval = function(start, end, data) {
 
     // get the type
     if (start == Interval.MAX_VALUE) {

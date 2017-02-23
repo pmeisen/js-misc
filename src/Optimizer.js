@@ -19,7 +19,6 @@ var instance = {
 
 // we are using the system within a browser
 if (typeof window !== 'undefined') {
-    console.log('test2');
     for (var property in instance) {
         if (instance.hasOwnProperty(property)) {
             window[property] = instance[property];

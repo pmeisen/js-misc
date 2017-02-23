@@ -10,7 +10,7 @@ JavaScript with several miscellaneous stuff. The library provides for example:
 The library can be used with `bower`, `nodeJs (npm)`, `requireJs` or as individual `JavaScript Import`. The following paragraphs 
 explain how to use the library in the different scenarios.
 
-### Using the Miscellanious Library with `bower`
+### Using js-misc with `bower`
 
 ```
 bower install --save js-misc
@@ -28,7 +28,7 @@ libraries are bound to the `window` instance as:
 Thus, they can be simple used by just using `Utility.isEventSupported('click');` or `var intervalCollection = new IntervalCollection();`. 
 Further examples on how to use the different libraries can be found [here](#usage-examples).
 
-### Using the Miscellanious Library with `nodeJs (npm)`
+### Using js-misc with `nodeJs (npm)`
 
 To use the library within a node project, simple install it using `npm`:
 
@@ -58,7 +58,7 @@ var overlaps = intervalCollection.overlap(new Interval(5, 8));
 
 Further examples can be found [here](#usage-examples).
 
-### Using the Miscellanious Library with `requireJs`
+### Using js-misc with `requireJs`
 
 If you are building larger web-applications and you want to enjoy the advantage of [requireJs](http://requirejs.org/), you
 need to include the sources (and not the optimized libraries). To do so, you may download the tarball or a zip-archive from 
@@ -82,7 +82,7 @@ require([
 });
 ```
 
-### Using the Miscellaneous Library with `JavaScript Import`
+### Using js-misc with `JavaScript Import`
 
 If you simple want to use the library within your web-site, you can easily do so by downloading it, deploying it on your
 server and adding `<script>...</script>` tags:

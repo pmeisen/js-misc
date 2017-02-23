@@ -49,7 +49,7 @@ available like:
 
 For example:
 
-```
+```javascript
 var Misc = require('js-misc');
 
 var Interval = Misc.IntervalCollection.Interval;
@@ -67,7 +67,7 @@ If you are building larger web-applications and you want to enjoy the advantage 
 need to include the sources (and not the optimized libraries). To do so, you may download the tarball or a zip-archive from 
 GitHub and place it into your `scripts` folder. You can then require the needed library as following:
 
-```
+```javascript
 require([
     'net/meisen/general/Utility',
     'net/meisen/general/date/DateLibrary',
@@ -90,13 +90,13 @@ require([
 If you simple want to use the library within your web-site, you can easily do so by downloading it, deploying it on your
 server and adding `<script>...</script>` tags:
 
-```
+```html
 <script src="/js/js-misc.min.js"></script>
 ```
 
 The different libraries are bound to the `window` instance and thus are directly available for any other script:
 
-```
+```html
 <script src="/js/js-misc.min.js"></script>
 <script type="text/javascript">
     var intervalCollection = new IntervalCollection();
@@ -121,7 +121,7 @@ the test folder, i.e., [test](/test/net/meisen/general) and [specs](/specs/net/m
 Using the module within nodeJs means that the libraries and data-types cannot be accessed directly (i.e., be just typing
 the libraries or data-types name). For the examples, I assume that the following code was used:
 
-```
+```javascript
 var Misc = require('js-misc');
 
 var Utility = Misc.Utility;
@@ -135,7 +135,7 @@ var IntervalCollection = Misc.IntervalCollection;
 The `NumberLibrary` offers an easy way to format numbers using the symbols `#`, `0`, `.`, and `,` 
 as described, e.g., [here](https://msdn.microsoft.com/en-us/library/0c899ak8(v=vs.110).aspx).
 
-```
+```javascript
 console.log(NumberLibrary.format(3.54, '#'));
 console.log(NumberLibrary.format(3.54, '00'));
 console.log(NumberLibrary.format(2.657, '#000.00'));
@@ -158,7 +158,7 @@ Creates the output:
 The `IntervalLibrary` offers some implementations to work with intervals, e.g., to find overlapping intervals within a collection,
 compare intervals within a collections, or find the position to add an interval. 
 
-```
+```javascript
 // find overlapping intervals
 var intervalCollection = new IntervalCollection();
 intervalCollection.insert(new Interval(6, 6, {id: 1}));
@@ -171,7 +171,7 @@ if (result.length > 0) {
 }
 ```
 
-```
+```javascript
 // find the position to insert a value, so that the collection stays sorted
 var intervalCollection = new IntervalCollection();
 

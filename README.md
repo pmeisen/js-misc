@@ -1,6 +1,6 @@
 # js-misc
 [![Bower version](https://badge.fury.io/bo/js-misc.svg)](https://badge.fury.io/bo/js-misc)
-[![npm version](http://img.shields.io/npm/v/js-misc.svg?style=flat)](https://npmjs.org/package/js-misc "View this project on npm")
+[![npm version](https://badge.fury.io/js/js-misc.svg)](https://badge.fury.io/js/js-misc)
 [![Build Status](https://travis-ci.org/pmeisen/js-misc.svg?branch=master)](https://travis-ci.org/pmeisen/js-misc)
 
 JavaScript with several miscellaneous stuff. The library provides for example:
